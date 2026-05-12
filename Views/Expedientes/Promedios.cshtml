@@ -1,0 +1,62 @@
+﻿@using System.Text.Json
+@model IEnumerable<ColegioSanJose.Models.PromedioViewModel>
+
+
+<div class="container mt-4">
+
+    <h2 class="mb-4 text-primary">
+        Promedio de Notas por Alumno
+    </h2>
+
+    <table class="table table-bordered table-hover">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Alumno</th>
+                <th>Promedio</th>
+            </tr>
+        </thead>
+        <canvas id="graficaPromedios"></canvas>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+
+            const labels = @Html.Raw(JsonSerializer.Serialize(Model.Select(m => m.Alumno)));
+
+            const data = @Html.Raw(JsonSerializer.Serialize(Model.Select(m => m.Promedio)));
+
+
+            const ctx = document.getElementById('graficaPromedios');
+
+            new Chart(ctx, {
+
+                type: 'bar',
+
+                data: {
+                    labels: labels,
+
+                    datasets: [{
+                        label: 'Promedio',
+                        data: data
+                    }]
+                }
+            });
+
+        </script>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Alumno</td>
+                    <td>@item.Promedio</td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>

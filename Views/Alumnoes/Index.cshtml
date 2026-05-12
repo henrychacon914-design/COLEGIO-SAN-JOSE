@@ -1,0 +1,100 @@
+﻿@model IEnumerable<ColegioSanJose.Models.Alumno>
+
+@{
+    ViewData["Title"] = "Gestión de Alumnos";
+}
+
+<div class="container mt-4">
+    <div class="row align-items-center mb-3">
+        <div class="col-md-6">
+            <h3 class="text-primary fw-bold mb-0">
+                <i class="bi bi-people-fill me-2"></i>Gestión de Alumnos
+            </h3>
+            <p class="text-muted small mb-0">Listado oficial del sistema</p>
+        </div>
+        <div class="col-md-6 text-end">
+            <div class="btn-group shadow-sm">
+                <a asp-controller="Importar" asp-action="AlumnosExcel" class="btn btn-sm btn-outline-success">
+                    <i class="bi bi-file-earmark-excel me-1"></i> Carga Masiva
+                </a>
+                <a asp-action="Create" class="btn btn-sm btn-primary">
+                    <i class="bi bi-plus-lg me-1"></i> Nuevo Alumno
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-body p-0">
+        </div>
+    </div>
+</div>
+
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="bg-light">
+                        <tr class="text-secondary">
+                            <th class="ps-4 py-3">ID Estudiante</th>
+                            <th class="py-3">Nombre Completo</th>
+                            <th class="py-3">Fecha de Nacimiento</th>
+                            <th class="py-3">Grado</th>
+                            <th class="text-center py-3">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <!-- ID Único Visual -->
+                                <td class="ps-4">
+                                    <span class="badge bg-secondary bg-opacity-10 text-secondary fw-bold px-3 py-2">
+                                        ALU-@item.AlumnoId.ToString("D3")
+                                    </span>
+                                </td>
+
+                                <!-- Nombre con Icono -->
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="rounded-circle bg-primary bg-opacity-10 text-primary d-flex justify-content-center align-items-center me-3" style="width: 38px; height: 38px;">
+                                            <i class="bi bi-person-fill"></i>
+                                        </div>
+                                        <span class="fw-semibold">@item.Nombre @item.Apellido</span>
+                                    </div>
+                                </td>
+
+                                <!-- Fecha Limpia -->
+                                <td class="text-muted">
+                                    <i class="bi bi-calendar3 me-2"></i>@item.FechaNacimiento.ToString("dd/MM/yyyy")
+                                </td>
+
+                                <!-- Grado con Badge -->
+                                <td>
+                                    <span class="badge rounded-pill bg-info bg-opacity-25 text-info border border-info border-opacity-25 px-3">
+                                        @item.Grado
+                                    </span>
+                                </td>
+
+                                <!-- Acciones Modernas -->
+                                <td class="text-center">
+                                    <div class="btn-group" role="group">
+                                        <a asp-action="Edit" asp-route-id="@item.AlumnoId" class="btn btn-sm btn-outline-primary border-0" title="Editar">
+                                            <i class="bi bi-pencil-square fs-5"></i>
+                                        </a>
+                                        <a asp-action="Details" asp-route-id="@item.AlumnoId" class="btn btn-sm btn-outline-info border-0" title="Detalles">
+                                            <i class="bi bi-eye-fill fs-5"></i>
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.AlumnoId" class="btn btn-sm btn-outline-danger border-0" title="Eliminar">
+                                            <i class="bi bi-trash3-fill fs-5"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

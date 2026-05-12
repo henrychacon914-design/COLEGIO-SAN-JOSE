@@ -1,0 +1,78 @@
+﻿@model IEnumerable<ColegioSanJose.Models.Materia>
+
+@{
+    ViewData["Title"] = "Gestión de Materias";
+}
+
+<div class="container mt-4">
+    <div class="row align-items-center mb-3">
+        <div class="col-md-6">
+            <h3 class="text-primary fw-bold mb-0">
+                <i class="bi bi-journal-bookmark-fill me-2"></i>Gestión de Materias
+            </h3>
+            <p class="text-muted small mb-0">Catálogo de asignaturas y docentes</p>
+        </div>
+        <div class="col-md-6 text-end">
+            <div class="btn-group shadow-sm">
+                <a asp-controller="Importar" asp-action="MateriasExcel" class="btn btn-sm btn-outline-success">
+                    <i class="bi bi-file-earmark-excel me-1"></i> Carga Masiva
+                </a>
+                <a asp-action="Create" class="btn btn-sm btn-primary">
+                    <i class="bi bi-plus-lg me-1"></i> Nueva Materia
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="bg-light">
+                        <tr class="text-secondary small fw-bold">
+                            <th class="ps-4 py-3">CÓDIGO</th>
+                            <th class="py-3">MATERIA</th>
+                            <th class="py-3">DOCENTE</th>
+                            <th class="text-center py-3">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="ps-4">
+                                    <span class="badge bg-secondary bg-opacity-10 text-secondary fw-bold">
+                                        @{
+                                            string nombre = item.NombreMateria ?? "MAT";
+                                            string pref = nombre.Substring(0, Math.Min(3, nombre.Length)).ToUpper();
+                                        }
+                                        @pref-@item.MateriaId.ToString("D3")
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="rounded-3 bg-success bg-opacity-10 text-success d-flex justify-content-center align-items-center me-3" style="width: 32px; height: 32px;">
+                                            <i class="bi bi-book-half small"></i>
+                                        </div>
+                                        <span class="fw-bold">@item.NombreMateria</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <small class="text-muted"><i class="bi bi-person-badge me-1"></i>@item.Docente</small>
+                                </td>
+                                <td class="text-center">
+                                    <div class="btn-group">
+                                        <a asp-action="Edit" asp-route-id="@item.MateriaId" class="btn btn-sm text-primary border-0"><i class="bi bi-pencil-square"></i></a>
+                                        <a asp-action="Details" asp-route-id="@item.MateriaId" class="btn btn-sm text-info border-0"><i class="bi bi-eye-fill"></i></a>
+                                        <a asp-action="Delete" asp-route-id="@item.MateriaId" class="btn btn-sm text-danger border-0"><i class="bi bi-trash3-fill"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

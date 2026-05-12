@@ -1,0 +1,104 @@
+html {
+    font-size: 14px;
+}
+
+body {
+    background: #f4f7fc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* NAVBAR */
+
+.navbar {
+    background: linear-gradient(90deg, #0d6efd, #0a58ca) !important;
+    padding: 15px;
+}
+
+.navbar-brand {
+    font-size: 30px;
+    font-weight: bold;
+    color: white !important;
+}
+
+.nav-link {
+    color: white !important;
+    font-size: 18px;
+    margin-left: 15px;
+    transition: 0.3s;
+}
+
+    .nav-link:hover {
+        transform: scale(1.05);
+        color: #dbe9ff !important;
+    }
+
+/* TITULOS */
+
+h1, h2, h3, h4 {
+    font-weight: bold;
+}
+
+/* CARDS */
+
+.card {
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+.shadow-lg {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+}
+
+/* TABLAS */
+
+.table {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+    .table thead {
+        background: #0d6efd;
+        color: white;
+    }
+
+.table-hover tbody tr:hover {
+    background: #eef4ff;
+}
+
+/* BOTONES */
+
+.btn {
+    border-radius: 12px;
+    padding: 8px 18px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+    .btn:hover {
+        transform: scale(1.03);
+    }
+
+/* DASHBOARD */
+
+.dashboard-title {
+    font-size: 70px;
+    font-weight: bold;
+    color: #0d6efd;
+}
+
+.dashboard-subtitle {
+    color: #6c757d;
+    font-size: 40px;
+}
+
+/* GRAFICA */
+
+canvas {
+    margin-top: 20px;
+}
