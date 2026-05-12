@@ -24,13 +24,13 @@ Es una aplicación web diseñada para la gestión integral de institucion educat
 
 1.  **Clonar el repositorio:**
     ```bash
-    git clone https://github.com/usuario/gestor-academico-solu-tecc.git
+    git clone https://github.com/henrychacon914-design/COLEGIO-SAN-JOSE
     ```
 2.  **Configurar la Base de Datos:**
     * Abre SQL Server Management Studio (SSMS).
-    * Ejecuta el script ubicado en la carpeta `Database/Script_Gestor_Academico.sql`.
+    * Ejecuta el script ubicado en la carpeta `BD SQL/BD.sql`.
 3.  **Abrir el Proyecto:**
-    * Abre el archivo `SOLU-TECC.sln` en Visual Studio.
+    * Abre el archivo `colegio san jose` en Visual Studio.
     * Restaura los paquetes NuGet (clic derecho en la Solución > Restaurar paquetes NuGet).
 4.  **Ejecutar:**
     * Presiona `F5` o haz clic en el botón **Iniciar**.
